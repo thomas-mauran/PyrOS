@@ -15,7 +15,8 @@ $(BUILD_DIR)/main_floppy.img: bootloader
 	dd if=$(BUILD_DIR)/bootloader.bin of=$(BUILD_DIR)/main_floppy.img conv=notrunc
 
 bootloader: build_dir
-	$(ASM) $(SRC_FOLD)/boot.asm -f bin -o $(BUILD_DIR)/bootloader.bin
+	cd $(SRC_FOLD) && $(ASM) boot.asm -f bin -o ../$(BUILD_DIR)/bootloader.bin
+
 
 build_dir:
 	mkdir -p $(BUILD_DIR)
